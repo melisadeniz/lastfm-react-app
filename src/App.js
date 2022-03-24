@@ -1,7 +1,5 @@
 // router
 import { Routes, Route } from "react-router-dom";
-//context
-import MainContextProvider from "./contexts/MainContextProvider";
 import { ChakraProvider } from '@chakra-ui/react'
 import Home from "./pages/Home"
 import Details from "./pages/Details";
@@ -10,7 +8,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <MainContextProvider>
+    
        <ChakraProvider>
       {/* <GlobalStyles /> */}
       <Navbar />
@@ -20,7 +18,7 @@ function App() {
       </Routes>
       {/* <Footer /> */}
       </ChakraProvider>
-    </MainContextProvider>
+    
   );
 }
 

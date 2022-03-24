@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { fetchTopAlbums, fetchTopTracks } from "../data";
 
 export default function Details() {
-
   const { artist } = useParams();
 
   const artistAlbumsData = useQuery(
@@ -23,5 +22,8 @@ export default function Details() {
     }
   );
 
-  return <div>Details</div>;
+  return (
+    //Use item.image[3]['#text'] instead of item.image
+    <div>Details</div>
+  );
 }
