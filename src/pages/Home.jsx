@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { fetchTopArtists } from "../data";
+import Card from "../components/Card"
 
 export default function Home() {
 
@@ -17,12 +18,12 @@ export default function Home() {
       <div className="title d-flex">
         <h2>TOP ARTISTS</h2>
       </div>
-      <CardContainer>
-        {data?.map((item) => (
+      
+        {/* {data?.map((item) => (
           <Card item={item} />
         ))}
-      </CardContainer>
-      {data?.length === 0 && <NotFound />}
+      
+      {data?.length === 0 && <NotFound />} */}
     </div>
   );
 }
