@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Artist({ item }) {
+  
   const artist_url = decodeURI(item.name);
 
   return (
