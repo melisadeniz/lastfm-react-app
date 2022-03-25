@@ -4,6 +4,8 @@ import { fetchTopArtists } from "../data";
 import ArtistCard from "../components/ArtistCard";
 
 export default function Home() {
+;
+  
   const topArtistsData = useQuery("discover movies", fetchTopArtists, {
     select: (data) => data.data.artists.artist,
     retry: false,

@@ -34,7 +34,7 @@ export default function Card({ item }) {
             src={item.image[2]['#text']}
           />
         <Box>
-         <Link to={`/artist/${item.mbid}`}>
+         <Link href={`/artist/${item.mbid}`}>
           <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={700}>
             {item.name}
           </Heading>
