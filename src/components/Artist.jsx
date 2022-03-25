@@ -8,10 +8,13 @@ import {
   Stack,
   Link,
   Image,
-  SimpleGrid
+  SimpleGrid,
+  Divider,
 } from "@chakra-ui/react";
 
 export default function Artist({ item }) {
+  const artist_url = decodeURI(item.name);
+
   return (
     <Center py={3}>
       <Box
@@ -25,37 +28,38 @@ export default function Artist({ item }) {
         pos={"relative"}
         zIndex={1}
       >
-        <SimpleGrid columns={{ base: 1, md: 2 }}>
-        <Image
-            rounded={'lg'}
+        <SimpleGrid columns={{ md: 3 }}>
+          <Image
+            rounded={"lg"}
             width={20}
             height={20}
-            objectFit={'cover'}
-            src={item.image[2]['#text']}
+            marginLeft={10}
+            objectFit={"cover"}
+            src={item.image[2]["#text"]}
           />
-        <Box>
-         <Link href={`/artist/${item.mbid}`}>
-          <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={700}>
-            {item.name}
-          </Heading>
-          </Link>
-          <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={600} fontSize={"md"}>
-              Playcount:
-            </Text>
-            <Text color={"gray.600"}>{item.playcount}</Text>
-          </Stack>
-          <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={600} fontSize={"md"}>
-              Listeners:
-            </Text>
-            <Text color={"gray.600"}>{item.listeners}</Text>
-          </Stack>
+           <Box>
+            <Link href={`/artist/${artist_url}`}>
+              
+              <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700}>
+                {item.name}
+              </Heading>
+              <Divider p={1} />
+            </Link>
+            <Stack direction={"row"} align={"center"}>
+              <Text fontWeight={600} fontSize={"md"}>
+                Playcount:
+              </Text>
+              <Text color={"gray.600"}>{item.playcount}</Text>
+            </Stack>
+            <Stack direction={"row"} align={"center"}>
+              <Text fontWeight={600} fontSize={"md"}>
+                Listeners:
+              </Text>
+              <Text color={"gray.600"}>{item.listeners}</Text>
+            </Stack>
           </Box>
-          </SimpleGrid>
+        </SimpleGrid>
       </Box>
     </Center>
   );
 }
-
-

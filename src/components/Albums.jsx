@@ -4,13 +4,12 @@ import { useParams } from "react-router-dom";
 import Card from "./Card";
 import { fetchTopAlbums } from "../data";
 
-
 export default function Albums() {
-  const { mbid } = useParams();
+  const { artist_url } = useParams();
 
   const artistAlbumsData = useQuery(
-    ["artist", mbid],
-    () => fetchTopAlbums(mbid),
+    ["artist", artist_url],
+    () => fetchTopAlbums(artist_url),
     {
       retry: false,
     }
@@ -22,8 +21,8 @@ export default function Albums() {
     <div>
       <ul>
         {artistAlbums?.map((item) => (
-          <li key={item.artist.mbid}>
-            <Card item={item} />
+          <li>
+            <Card key={artist_url} item={item} />
           </li>
         ))}
       </ul>

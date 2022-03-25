@@ -1,24 +1,19 @@
 // router
 import { Routes, Route } from "react-router-dom";
-import { ChakraProvider } from '@chakra-ui/react'
-import routes from './routes';
-import Navbar from "./components/Navbar";
-// import { Footer } from "./components";
+import { ChakraProvider } from "@chakra-ui/react";
+import routes from "./routes";
+import Header from "./components/Header";
 
 function App() {
   return (
-    
-       <ChakraProvider>
-      {/* <GlobalStyles /> */}
-      <Navbar />
+    <ChakraProvider>
+      <Header />
       <Routes>
-      {routes.map((item, index) => (
-              <Route key={index} path={item.path} element={<item.element />} />
-            ))}
+        {routes.map((item, index) => (
+          <Route key={index} path={item.path} element={<item.element />} />
+        ))}
       </Routes>
-      {/* <Footer /> */}
-      </ChakraProvider>
-    
+    </ChakraProvider>
   );
 }
 

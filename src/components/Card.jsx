@@ -7,7 +7,7 @@ import {
   Text,
   Stack,
   Image,
-  Divider
+  Divider,
 } from "@chakra-ui/react";
 
 export default function Card({ item }) {
@@ -48,11 +48,11 @@ export default function Card({ item }) {
         ></Box>
         <Stack pt={10} align={"left"}>
           <Image
-            rounded={'lg'}
+            rounded={"lg"}
             height={100}
             width={100}
-            objectFit={'cover'}
-            src={item.image[3]['#text']}
+            objectFit={"cover"}
+            src={item.image[3]["#text"]}
           />
           <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={700}>
             {item.name}

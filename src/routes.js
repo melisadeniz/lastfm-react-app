@@ -5,7 +5,7 @@ import Details from './pages/Details';
 
 const routes = [
   {title: "Home", path:"/", element: Home },
-  {title: "Details", path: "/artist/:mbid", element: Details },
+  {title: "Details", path: "/artist/:artist_url", element: Details },
   // {title:"NotFound", path: "*", element: NotFound }
 ]
 

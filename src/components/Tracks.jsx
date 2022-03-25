@@ -5,11 +5,11 @@ import Card from "../components/Card";
 import { fetchTopTracks } from "../data";
 
 export default function Tracks() {
+  const { artist_url } = useParams();
 
-  const { mbid } = useParams();
   const artistTracksData = useQuery(
-    ["artist", mbid],
-    () => fetchTopTracks(mbid),
+    ["artist", artist_url],
+    () => fetchTopTracks(artist_url),
     {
       retry: false,
     }
@@ -21,8 +21,8 @@ export default function Tracks() {
     <div>
       <ul>
         {artistTracks?.map((item) => (
-          <li key={item.artist.mbid}>
-            <Card item={item} />
+          <li>
+            <Card key={artist_url} item={item} />
           </li>
         ))}
       </ul>
