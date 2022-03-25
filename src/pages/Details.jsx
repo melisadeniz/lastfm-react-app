@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Container, Heading, Flex, Box, Center, SimpleGrid, Image } from "@chakra-ui/react";
+import { Container, Heading, Flex, Box, Center, SimpleGrid, Image, useColorModeValue } from "@chakra-ui/react";
 import Albums from "../components/Albums";
 import Tracks from "../components/Tracks";
 
@@ -15,7 +15,7 @@ export default function Details({item}) {
         p={5}
         maxW={"500px"}
         w={"full"}
-        // bg={useColorModeValue("white", "gray.900")}
+        bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"lg"}
         pos={"relative"}
@@ -51,12 +51,6 @@ export default function Details({item}) {
         <Tracks key={artist_url} />
         </Box>
       </Flex>
-
-      {/* {data?.map((item) => (
-    <Card item={item} />
-  ))}
-
-{data?.length === 0 && <NotFound />} */}
     </Container>
   );
 }
