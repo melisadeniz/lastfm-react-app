@@ -9,6 +9,8 @@ export default function Details() {
 
   const { mbid } = useParams();
 
+  
+
   return (
    
     <Box p={4}>

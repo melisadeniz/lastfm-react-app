@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import DetailCard from "../components/DetailCard";
+import Card from "../components/Card";
 import { fetchTopTracks } from "../data";
 
 export default function Tracks() {
@@ -22,7 +22,7 @@ export default function Tracks() {
       <ul>
         {artistTracks?.map((item) => (
           <li key={item.artist.mbid}>
-            <DetailCard item={item} />
+            <Card item={item} />
           </li>
         ))}
       </ul>

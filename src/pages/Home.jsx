@@ -1,7 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { fetchTopArtists } from "../data";
-import ArtistCard from "../components/ArtistCard";
+import Artist from "../components/Artist"
+import { Text, Stack} from '@chakra-ui/react';;
 
 export default function Home() {
 ;
@@ -12,14 +13,16 @@ export default function Home() {
   });
 
   return (
-    <div className="container">
+    <Stack>
       <div className="title d-flex">
-        <h1>TOP ARTISTS</h1>
+        <Text>
+          TOP ARTISTS
+        </Text>
       </div>
       <ul>
         {topArtistsData?.data?.map((item) => (
           <li key={item.mbid} >
-            <ArtistCard item={item} />
+            <Artist item={item} />
           </li>
         ))}
       </ul>
@@ -29,6 +32,6 @@ export default function Home() {
         ))}
       
       {data?.length === 0 && <NotFound />} */}
-    </div>
+    </Stack>
   );
 }

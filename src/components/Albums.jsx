@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import DetailCard from "../components/DetailCard";
+import Card from "./Card";
 import { fetchTopAlbums } from "../data";
 
 
@@ -23,7 +23,7 @@ export default function Albums() {
       <ul>
         {artistAlbums?.map((item) => (
           <li key={item.artist.mbid}>
-            <DetailCard item={item} />
+            <Card item={item} />
           </li>
         ))}
       </ul>

@@ -10,7 +10,7 @@ import {
   Divider
 } from "@chakra-ui/react";
 
-export default function DetailCard({ item }) {
+export default function Card({ item }) {
   return (
     <Center py={3}>
       <Box

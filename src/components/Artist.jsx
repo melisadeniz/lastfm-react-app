@@ -11,7 +11,7 @@ import {
   SimpleGrid
 } from "@chakra-ui/react";
 
-export default function Card({ item }) {
+export default function Artist({ item }) {
   return (
     <Center py={3}>
       <Box
