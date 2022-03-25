@@ -16,7 +16,7 @@ export default function Home() {
       </div>
       <ul>
         {topArtistsData?.data?.map((item) => (
-          <li>
+          <li key={item.mbid} >
             <ArtistCard item={item} />
           </li>
         ))}

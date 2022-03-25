@@ -6,6 +6,9 @@ import {
   Heading,
   Text,
   Stack,
+  Link,
+  Image,
+  SimpleGrid
 } from "@chakra-ui/react";
 
 export default function Card({ item }) {
@@ -14,7 +17,7 @@ export default function Card({ item }) {
       <Box
         role={"group"}
         p={5}
-        maxW={"630px"}
+        maxW={"500px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
@@ -22,39 +25,20 @@ export default function Card({ item }) {
         pos={"relative"}
         zIndex={1}
       >
-        <Box
-          rounded={"lg"}
-          mt={-12}
-          pos={"relative"}
-          height={"20px"}
-          _after={{
-            transition: "all .3s ease",
-            content: '""',
-            w: "full",
-            h: "full",
-            pos: "absolute",
-            top: 5,
-            left: 0,
-            filter: "blur(15px)",
-            zIndex: -1,
-          }}
-          _groupHover={{
-            _after: {
-              filter: "blur(20px)",
-            },
-          }}
-        ></Box>
-        <Stack pt={10} align={"left"}>
-          {/* <Image
+        <SimpleGrid columns={{ base: 1, md: 2 }}>
+        <Image
             rounded={'lg'}
-            height={100}
-            width={100}
+            width={20}
+            height={20}
             objectFit={'cover'}
-            src={item.image[3]['#text']}
-          /> */}
+            src={item.image[2]['#text']}
+          />
+        <Box>
+         <Link to={`/artist/${item.mbid}`}>
           <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={700}>
             {item.name}
           </Heading>
+          </Link>
           <Stack direction={"row"} align={"center"}>
             <Text fontWeight={600} fontSize={"md"}>
               Playcount:
@@ -67,8 +51,11 @@ export default function Card({ item }) {
             </Text>
             <Text color={"gray.600"}>{item.listeners}</Text>
           </Stack>
-        </Stack>
+          </Box>
+          </SimpleGrid>
       </Box>
     </Center>
   );
 }
+
+

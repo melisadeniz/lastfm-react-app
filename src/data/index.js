@@ -7,9 +7,9 @@ const BASE_AXIOS = axios.create({baseURL:"http://ws.audioscrobbler.com/2.0"});
 export const fetchTopArtists = () => BASE_AXIOS.get(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json`)
 
 //artist.getTopAlbums
-export const fetchTopAlbums = (artistName) => BASE_AXIOS.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artistName}&api_key=${API_KEY}&format=json`)
+export const fetchTopAlbums = (mbid) => BASE_AXIOS.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${API_KEY}&format=json&mbid=${mbid}`)
 
 //artist.getTopTracks
-export const fetchTopTracks = (artistName) => BASE_AXIOS.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artistName}&api_key=${API_KEY}&format=json`)
+export const fetchTopTracks = (mbid) => BASE_AXIOS.get(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&api_key=${API_KEY}&format=json&mbid=${mbid}`)
 
 

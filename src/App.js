@@ -1,8 +1,7 @@
 // router
 import { Routes, Route } from "react-router-dom";
 import { ChakraProvider } from '@chakra-ui/react'
-import Home from "./pages/Home"
-import Details from "./pages/Details";
+import routes from './routes';
 import Navbar from "./components/Navbar";
 // import { Footer } from "./components";
 
@@ -13,8 +12,9 @@ function App() {
       {/* <GlobalStyles /> */}
       <Navbar />
       <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/details"} element={<Details />} />
+      {routes.map((item, index) => (
+              <Route key={index} path={item.path} element={<item.element />} />
+            ))}
       </Routes>
       {/* <Footer /> */}
       </ChakraProvider>
