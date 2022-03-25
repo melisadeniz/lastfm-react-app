@@ -4,19 +4,19 @@ import { useParams } from "react-router-dom";
 import { fetchTopAlbums, fetchTopTracks } from "../data";
 
 export default function Details() {
-  const { artist } = useParams();
+  const { artistName } = useParams();
 
   const artistAlbumsData = useQuery(
-    ["artist", artist],
-    () => fetchTopAlbums(artist),
+    ["artist", artistName],
+    () => fetchTopAlbums(artistName),
     {
       retry: false,
     }
   );
 
   const artistTracksData = useQuery(
-    ["artist", artist],
-    () => fetchTopTracks(artist),
+    ["artist", artistName],
+    () => fetchTopTracks(artistName),
     {
       retry: false,
     }
