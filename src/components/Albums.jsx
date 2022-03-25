@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
+import { List, ListItem } from "@chakra-ui/react";
 import { fetchTopAlbums } from "../data";
 
 export default function Albums() {
@@ -18,14 +19,14 @@ export default function Albums() {
   const artistAlbums = artistAlbumsData?.data?.data?.topalbums?.album;
 
   return (
-    <div>
-      <ul>
-        {artistAlbums?.map((item) => (
-          <li>
-            <Card key={artist_url} item={item} />
-          </li>
-        ))}
-      </ul>
-    </div>
+  
+  <List spacing={3}>
+    {artistAlbums?.map((item) => (
+     <ListItem>
+        <Card key={artist_url} item={item} />
+     </ListItem>
+      ))}
+     </List>
+ 
   );
 }
