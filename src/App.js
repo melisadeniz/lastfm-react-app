@@ -1,8 +1,10 @@
+import React from "react";
 // router
 import { Routes, Route } from "react-router-dom";
+// chakra-ui
 import { ChakraProvider } from "@chakra-ui/react";
-import routes from "./routes";
 import Header from "./components/Header";
+import routes from "./routes";
 
 function App() {
   return (

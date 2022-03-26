@@ -17,7 +17,6 @@ export default function Home() {
         <Heading>TOP ARTISTS</Heading>
       </Center>
 
-      <Center>
         <List spacing={3}>
           {topArtistsData?.data?.map((item) => (
             <ListItem>
@@ -26,12 +25,13 @@ export default function Home() {
           ))}
         </List>
 
+
         {/* {data?.map((item) => (
           <Card item={item} />
         ))}
       
       {data?.length === 0 && <NotFound />} */}
-      </Center>
+     
     </Container>
   );
 }

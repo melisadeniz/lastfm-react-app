@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import {
-  Container,
+  Center,
+  Wrap,
   Heading,
   Flex,
   Box,
-  Center,
   SimpleGrid,
   Image,
   useColorModeValue,
@@ -56,13 +56,11 @@ export default function Details() {
   const artistTracks = artistTracksData?.data;
 
   return (
-    <Container>
-      <Center py={3}>
+    <Wrap>
+       <Center p={5}>
         <Box
           role={"group"}
           p={5}
-          maxW={"500px"}
-          w={"full"}
           bg={useColorModeValue("white", "gray.900")}
           boxShadow={"2xl"}
           rounded={"lg"}
@@ -91,10 +89,20 @@ export default function Details() {
             </Box>
           </SimpleGrid>
         </Box>
-      </Center>
+    </Center>
+
       <Flex>
-        <Box>
-          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700}>
+      
+      <Box
+          role={"group"}
+          p={5}
+          rounded={"lg"}
+          pos={"relative"}
+          zIndex={1}
+          w={"full"}
+        >
+       
+          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP ALBUMS
           </Heading>
 
@@ -105,9 +113,16 @@ export default function Details() {
               </ListItem>
             ))}
           </List>
-        </Box>
-        <Box>
-          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700}>
+         </Box>
+      
+        <Box
+          role={"group"}
+          p={5}
+          rounded={"lg"}
+          pos={"relative"}
+          zIndex={1}
+        >
+          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP TRACKS
           </Heading>
 
@@ -119,7 +134,7 @@ export default function Details() {
             ))}
           </List>
         </Box>
-      </Flex>
-    </Container>
+        </Flex>
+    </Wrap>
   );
 }
