@@ -12,9 +12,9 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
-import Card from "../components/Card";
-import { List, ListItem } from "@chakra-ui/react";
-import { fetchTopAlbums, fetchTopTracks, fetchArtistInfo } from "../api";
+import { fetchArtistInfo } from "../api";
+import Albums from "../components/Albums";
+import Tracks from "../components/Tracks";
 
 export default function Details() {
   const { artist_url } = useParams();
@@ -31,33 +31,9 @@ export default function Details() {
 
   const artistInfo = artistInfoData?.data;
 
-  // FETCH ALBUMS
-  const artistAlbumsData = useQuery(
-    ["albums", artist_url],
-    () => fetchTopAlbums(artist_url),
-    {
-      select: (data) => data.data.topalbums.album,
-      retry: false,
-    }
-  );
-
-  const artistAlbums = artistAlbumsData?.data;
-
-  // FETCH TRACKS
-  const artistTracksData = useQuery(
-    ["tracks", artist_url],
-    () => fetchTopTracks(artist_url),
-    {
-      select: (data) => data.data.toptracks.track,
-      retry: false,
-    }
-  );
-
-  const artistTracks = artistTracksData?.data;
-
   return (
     <Wrap>
-       <Center p={5}>
+      <Center p={5}>
         <Box
           role={"group"}
           p={5}
@@ -89,11 +65,10 @@ export default function Details() {
             </Box>
           </SimpleGrid>
         </Box>
-    </Center>
+      </Center>
 
       <Flex>
-      
-      <Box
+        <Box
           role={"group"}
           p={5}
           rounded={"lg"}
@@ -101,40 +76,22 @@ export default function Details() {
           zIndex={1}
           w={"full"}
         >
-       
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP ALBUMS
           </Heading>
+          
+          <Albums />
+        </Box>
 
-          <List spacing={3}>
-            {artistAlbums?.map((item, index) => (
-              <ListItem>
-                <Card key={index} item={item} />
-              </ListItem>
-            ))}
-          </List>
-         </Box>
-      
-        <Box
-          role={"group"}
-          p={5}
-          rounded={"lg"}
-          pos={"relative"}
-          zIndex={1}
-        >
+        <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}>
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP TRACKS
           </Heading>
 
-          <List spacing={3}>
-            {artistTracks?.map((item, index) => (
-              <ListItem>
-                <Card key={index} item={item} />
-              </ListItem>
-            ))}
-          </List>
+          <Tracks />
+          
         </Box>
-        </Flex>
+      </Flex>
     </Wrap>
   );
 }
