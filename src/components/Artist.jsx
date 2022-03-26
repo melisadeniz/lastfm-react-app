@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Artist({ item }) {
-  
+  // DECODE FOR URL
   const artist_url = decodeURI(item.name);
 
   return (
@@ -38,9 +38,8 @@ export default function Artist({ item }) {
             objectFit={"cover"}
             src={item.image[2]["#text"]}
           />
-           <Box>
+          <Box>
             <Link href={`/artist/${artist_url}`}>
-              
               <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700}>
                 {item.name}
               </Heading>

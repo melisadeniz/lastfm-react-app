@@ -3,13 +3,14 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import { List, ListItem } from "@chakra-ui/react";
-import { fetchTopTracks } from "../data";
+import { fetchTopTracks } from "../api";
 
 export default function Tracks() {
   const { artist_url } = useParams();
 
+  // FETCH TRACKS
   const artistTracksData = useQuery(
-    ["artist", artist_url],
+    ["tracks", artist_url],
     () => fetchTopTracks(artist_url),
     {
       retry: false,
@@ -19,14 +20,12 @@ export default function Tracks() {
   const artistTracks = artistTracksData?.data?.data?.toptracks?.track;
 
   return (
-
     <List spacing={3}>
-    {artistTracks?.map((item) => (
-     <ListItem>
-        <Card key={artist_url} item={item} />
-     </ListItem>
+      {artistTracks?.map((item) => (
+        <ListItem>
+          <Card key={artist_url} item={item} />
+        </ListItem>
       ))}
-     </List>
-
+    </List>
   );
 }

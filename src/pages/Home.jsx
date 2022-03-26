@@ -1,10 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { fetchTopArtists } from "../data";
+import { fetchTopArtists } from "../api";
 import Artist from "../components/Artist";
 import { Heading, Container, Center, List, ListItem } from "@chakra-ui/react";
 
 export default function Home() {
+  // FETCH TOP ARTISTS
   const topArtistsData = useQuery("discover movies", fetchTopArtists, {
     select: (data) => data.data.artists.artist,
     retry: false,
