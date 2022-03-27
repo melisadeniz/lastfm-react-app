@@ -10,6 +10,7 @@ import {
   Image,
   useColorModeValue,
   Divider,
+  Stack
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
 import { fetchArtistInfo } from "../api";
@@ -33,39 +34,35 @@ export default function Details() {
 
   return (
     <Wrap>
-      <Center p={5}>
-        <Box
-          role={"group"}
-          p={5}
-          bg={useColorModeValue("white", "gray.900")}
-          boxShadow={"2xl"}
+      <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}  w={"full"}>
+      <Box
+      p={5}
+      bg={useColorModeValue("white", "gray.900")}
+      boxShadow={"2xl"}
+      rounded={"lg"}
+      pos={"relative"}
+    >
+      <Flex
+      >
+        <Image
           rounded={"lg"}
-          pos={"relative"}
-          zIndex={1}
-        >
-          <SimpleGrid columns={{ md: 3 }}>
-            <Image
-              rounded={"lg"}
-              width={20}
-              height={20}
-              marginLeft={10}
-              objectFit={"cover"}
-              src={artistInfo?.image[1]["#text"]}
-            />
-            <Box>
-              <Heading
-                py={4}
-                fontSize={25}
-                fontFamily={"body"}
-                fontWeight={700}
-              >
-                {artistInfo?.name}
-              </Heading>
-              <Divider />
-            </Box>
-          </SimpleGrid>
+          width={20}
+          height={20}
+          objectFit={"cover"}
+          src={artistInfo?.image[2]["#text"]}
+        />
+        <Box>
+          <Heading fontSize={20} fontFamily={"body"} fontWeight={700} p={3} >
+            {artistInfo?.name}
+          </Heading>
+          <Divider px={5} />
         </Box>
-      </Center>
+      </Flex>
+    </Box>
+    </Box>
+
+ 
+       
 
       <Flex>
         <Box
@@ -83,7 +80,7 @@ export default function Details() {
           <Albums />
         </Box>
 
-        <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}>
+        <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}  w={"full"}>
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP TRACKS
           </Heading>

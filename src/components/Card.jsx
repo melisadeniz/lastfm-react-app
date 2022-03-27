@@ -7,18 +7,21 @@ import {
   Stack,
   Image,
   Divider,
-  Grid,
+  Flex,
 } from "@chakra-ui/react";
 
 export default function Card({ item }) {
   return (
     <Box
       p={4}
+      minWidth={"fit-content"}
       bg={useColorModeValue("white", "gray.900")}
       boxShadow={"2xl"}
       rounded={"lg"}
+      pos={"relative"}
+      zIndex={1}
     >
-      <Grid
+      <Flex
       >
         <Image
           rounded={"lg"}
@@ -27,7 +30,7 @@ export default function Card({ item }) {
           objectFit={"cover"}
           src={item.image[2]["#text"]}
         />
-        <Box>
+        <Box px={5}>
           <Heading fontSize={20} fontFamily={"body"} fontWeight={700}>
             {item.name}
           </Heading>
@@ -45,7 +48,7 @@ export default function Card({ item }) {
             <Text color={"gray.600"}>{item.playcount}</Text>
           </Stack>
         </Box>
-      </Grid>
+      </Flex>
     </Box>
   );
 }
