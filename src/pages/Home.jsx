@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useInfiniteQuery } from "react-query";
 import Artist from "../components/Artist";
-import { Heading, Container, Center, List, ListItem } from "@chakra-ui/react";
+import { Heading, Container, Center, List, ListItem, Button } from "@chakra-ui/react";
 
 export default function Home() {
   //FETCH TOP ARTISTS
@@ -66,9 +66,9 @@ export default function Home() {
         </List>
       </div>
 
-      {/* <Center p={5}>
+      <Center p={5}>
    <Button disabled={!hasNextPage} onClick={fetchNextPage}>Load More</Button>
- </Center> */}
+ </Center>
 
       {/* {data?.length === 0 && <NotFound />} */}
     </Container>

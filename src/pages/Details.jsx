@@ -1,16 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import {
-  Center,
   Wrap,
   Heading,
   Flex,
   Box,
-  SimpleGrid,
   Image,
   useColorModeValue,
   Divider,
-  Stack
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
 import { fetchArtistInfo } from "../api";
@@ -34,35 +31,38 @@ export default function Details() {
 
   return (
     <Wrap>
-      <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}  w={"full"}>
       <Box
-      p={5}
-      bg={useColorModeValue("white", "gray.900")}
-      boxShadow={"2xl"}
-      rounded={"lg"}
-      pos={"relative"}
-    >
-      <Flex
+        role={"group"}
+        p={5}
+        rounded={"lg"}
+        pos={"relative"}
+        zIndex={1}
+        w={"full"}
       >
-        <Image
+        <Box
+          p={5}
+          bg={useColorModeValue("white", "gray.900")}
+          boxShadow={"2xl"}
           rounded={"lg"}
-          width={20}
-          height={20}
-          objectFit={"cover"}
-          src={artistInfo?.image[2]["#text"]}
-        />
-        <Box>
-          <Heading fontSize={20} fontFamily={"body"} fontWeight={700} p={3} >
-            {artistInfo?.name}
-          </Heading>
-          <Divider px={5} />
+          pos={"relative"}
+        >
+          <Flex>
+            <Image
+              rounded={"lg"}
+              width={20}
+              height={20}
+              objectFit={"cover"}
+              src={artistInfo?.image[2]["#text"]}
+            />
+            <Box>
+              <Heading fontSize={20} fontFamily={"body"} fontWeight={700} p={3}>
+                {artistInfo?.name}
+              </Heading>
+              <Divider px={5} />
+            </Box>
+          </Flex>
         </Box>
-      </Flex>
-    </Box>
-    </Box>
-
- 
-       
+      </Box>
 
       <Flex>
         <Box
@@ -76,17 +76,23 @@ export default function Details() {
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP ALBUMS
           </Heading>
-          
+
           <Albums />
         </Box>
 
-        <Box role={"group"} p={5} rounded={"lg"} pos={"relative"} zIndex={1}  w={"full"}>
+        <Box
+          role={"group"}
+          p={5}
+          rounded={"lg"}
+          pos={"relative"}
+          zIndex={1}
+          w={"full"}
+        >
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP TRACKS
           </Heading>
 
           <Tracks />
-          
         </Box>
       </Flex>
     </Wrap>
