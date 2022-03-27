@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { useQueries } from "react-query";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTopArtists } from "../api";
+import React, {useEffect} from "react";
+import { useInfiniteQuery } from "react-query";
+// import { fetchTopArtists } from "../api";
 import Artist from "../components/Artist";
-import { loadMoreArtists, resetLoad } from "../reduxStore/loadMore";
 import {
   Heading,
   Container,
@@ -13,46 +10,51 @@ import {
   ListItem,
   Button,
   Text,
-  Box,
 } from "@chakra-ui/react";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const { load } = useSelector((state) => state);
-  const params = useParams();
 
-  const artists = useQueries(
-    load.map((page) => {
-      return {
-        queryKey: ["artists", page],
-        queryFn: () => fetchTopArtists(page),
-        select: (state) => state?.data?.artists?.artist,
-        enabled: false,
-        keepPreviousData: true,
-        cacheTime: 0,
-      };
-    })
+
+    //FETCH TOP ARTISTS
+  const fetchTopArtists = async (page = 1) => {
+    const response = await fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=e908f48f816b4a2314e9ddeeb138077f&format=json&page=${page}`
+    );
+    return response.json();
+  };
+
+
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+    "artist",
+    ({ pageParam = 1 }) => fetchTopArtists(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const maxPages = lastPage.total_count / 50;
+        const nextPage = allPages.length + 1;
+        return nextPage <= maxPages ? nextPage : undefined;
+      },
+    }
   );
-  // FETCH TOP ARTISTS
-  // const topArtistsData = useQueries(
-  //   ["artist", page],
-  //   () => fetchTopArtists(page),
-  //   {
-  //     select: (data) => data.data.artists.artist,
-  //     retry: false,
-  //   }
-  // );
+
 
   useEffect(() => {
-    artists[0].refetch();
-    dispatch(resetLoad());
+    let fetching = false;
+    const onScroll = async (event) => {
+      const { scrollHeight, scrollTop, clientHeight } =
+        event.target.scrollingElement;
+
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
+        fetching = true;
+        if (hasNextPage) await fetchNextPage();
+        fetching = false;
+      }
+    };
+
+    document.addEventListener("scroll", onScroll);
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+    };
   }, []);
-
-  useEffect(() => {
-    artists[load[load.length - 1] - 1]?.refetch();
-  }, [load, load.length, params.type]);
-
-  console.log("ARTISTS:::", artists);
 
   return (
     <Container>
@@ -60,49 +62,45 @@ export default function Home() {
         <Heading>TOP ARTISTS</Heading>
       </Center>
 
-      <List spacing={3}>
-        {artists?.data?.map((item) =>
-          item?.isLoading ? (
-            <h5>Loading...</h5>
-          ) : (
-            <ListItem>
-              <Artist
-                height={"280"}
-                width={"180"}
-                item={item}
-              />
-            </ListItem>
-          )
+<div>
+      <List>
+        {data?.pages.map((page) =>
+        page.artists.artist.map((item, index) => (
+          <ListItem key={index}>
+            <Artist height={"280"} width={"180"} item={item} />
+         </ListItem>
+        ))
         )}
-      </List>
+     </List>
+ </div>
 
-      <Box>
-        {artists[artists?.length - 1]?.data?.length === 0 ? (
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* {data?.length === 0 && <NotFound />} */}
+
+      {/* <Center p={5}>
+        {topArtistsData[topArtistsData?.length - 1]?.data?.length === 0 ? (
           <Text>No more results found!</Text>
         ) : (
           <Button
-            onClick={() => {
-              dispatch(loadMoreArtists());
-            }}
+          // onClick={() => {
+          //   dispatch(loadMoreArtists());
+          // }}
           >
             Load More
           </Button>
         )}
-      </Box>
-
-      {/* <List spacing={3}>
-        {artists?.data?.map((item) => (
-          <ListItem>
-            <Artist item={item} />
-          </ListItem>
-        ))}
-      </List> */}
-
-      {/* {data?.map((item) => (
-          <Card item={item} />
-        ))}
-      
-      {data?.length === 0 && <NotFound />} */}
+      </Center> */}
     </Container>
   );
 }
