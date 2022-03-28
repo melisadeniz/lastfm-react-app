@@ -83,15 +83,6 @@ export default function Home() {
             <h1 data-testid="welcome-heading">Welcome to Last.fm!</h1>
           </div>
         </HeadingStyle>
-        {/* <Heading
-          data-testid={"welcome-heading"}
-          color={"gray.400"}
-          fontSize={"2xl"}
-          fontFamily={"body"}
-          fontWeight={700}
-        >
-          Welcome to Last.fm!
-        </Heading> */}
       </Center>
       <Center mt={10}>
         <Heading fontSize={"3xl"} fontFamily={"body"} fontWeight={700}>
