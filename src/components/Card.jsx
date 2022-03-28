@@ -28,10 +28,10 @@ export default function Card({ item }) {
           width={20}
           height={20}
           objectFit={"cover"}
-          src={item.image[2]["#text"]}
+          src={item.image[1]["#text"]}
         />
         <Box px={5}>
-          <Heading fontSize={20} fontFamily={"body"} fontWeight={700}>
+          <Heading fontSize={20} fontFamily={"body"} fontWeight={650}>
             {item.name}
           </Heading>
           <Divider p={1} />

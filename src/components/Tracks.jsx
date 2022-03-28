@@ -21,9 +21,9 @@ export default function Tracks() {
 
   return (
     <List spacing={3}>
-      {artistTracks?.map((item) => (
+      {artistTracks?.map((item, index) => (
         <ListItem>
-          <Card key={artist_url} item={item} />
+          <Card key={index} item={item} />
         </ListItem>
       ))}
     </List>

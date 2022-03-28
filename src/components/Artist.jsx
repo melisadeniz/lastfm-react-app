@@ -36,7 +36,7 @@ export default function Artist({ item }) {
             height={20}
             marginLeft={10}
             objectFit={"cover"}
-            src={item.image[2]["#text"]}
+            src={item.image[1]["#text"]}
           />
           <Box>
             <Link href={`/artist/${artist_url}`}>

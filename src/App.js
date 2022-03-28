@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 // chakra-ui
 import { ChakraProvider } from "@chakra-ui/react";
-import Header from "./components/Header";
+import Header from "./pages/base/Header";
 import routes from "./routes";
 
 function App() {

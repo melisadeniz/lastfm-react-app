@@ -1,11 +1,11 @@
 import Home from './pages/Home';
-import Details from './pages/Details';
+import Detail from './pages/Detail';
 // import NotFound from './pages/NotFound';
 
 
 const routes = [
   {title: "Home", path:"/", element: Home },
-  {title: "Details", path: "/artist/:artist_url", element: Details },
+  {title: "Detail", path: "/artist/:artist_url", element: Detail },
   // {title:"NotFound", path: "*", element: NotFound }
 ]
 

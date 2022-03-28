@@ -14,7 +14,7 @@ import { fetchArtistInfo } from "../api";
 import Albums from "../components/Albums";
 import Tracks from "../components/Tracks";
 
-export default function Details() {
+export default function Detail() {
   const { artist_url } = useParams();
 
   // FETCH ARTIST INFO
@@ -30,7 +30,7 @@ export default function Details() {
   const artistInfo = artistInfoData?.data;
 
   return (
-    <Wrap>
+    <Wrap p={5}>
       <Box
         role={"group"}
         p={5}
@@ -52,13 +52,13 @@ export default function Details() {
               width={20}
               height={20}
               objectFit={"cover"}
-              src={artistInfo?.image[2]["#text"]}
+              src={artistInfo?.image[1]["#text"]}
             />
-            <Box>
-              <Heading fontSize={20} fontFamily={"body"} fontWeight={700} p={3}>
+            <Box p={5}>
+              <Heading fontSize={30} fontFamily={"body"} fontWeight={700}>
                 {artistInfo?.name}
               </Heading>
-              <Divider px={5} />
+              <Divider py={1} />
             </Box>
           </Flex>
         </Box>
