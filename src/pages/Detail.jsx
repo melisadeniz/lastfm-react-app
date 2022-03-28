@@ -77,6 +77,8 @@ export default function Detail() {
             TOP ALBUMS
           </Heading>
 
+          <Divider my={3}/>
+
           <Albums />
         </Box>
 
@@ -91,6 +93,8 @@ export default function Detail() {
           <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
             TOP TRACKS
           </Heading>
+
+          <Divider my={3}/>
 
           <Tracks />
         </Box>
