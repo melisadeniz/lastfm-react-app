@@ -21,8 +21,7 @@ export default function Card({ item }) {
       pos={"relative"}
       zIndex={1}
     >
-      <Flex
-      >
+      <Flex>
         <Image
           rounded={"lg"}
           width={20}
@@ -36,18 +35,13 @@ export default function Card({ item }) {
           </Heading>
           <Divider p={1} />
           <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={600} fontSize={15}>
-              Artist:
-            </Text>
-            <Text color={"gray.600"}>{item.artist.name}</Text>
+            <Text fontSize={"sm"} color={"gray.600"}> {item.artist.name}</Text>
           </Stack>
+      
           <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={600} fontSize={15}>
-              Playcount:
-            </Text>
-            <Text color={"gray.600"}>{item.playcount}</Text>
+            <Text fontSize={"sm"} color={"gray.600"}>{item.playcount} play</Text>
           </Stack>
-        </Box>
+         </Box>
       </Flex>
     </Box>
   );

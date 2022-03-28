@@ -8,7 +8,7 @@ import {
   Stack,
   Link,
   Image,
-  SimpleGrid,
+  Flex,
   Divider,
 } from "@chakra-ui/react";
 
@@ -20,7 +20,7 @@ export default function Artist({ item }) {
     <Center py={3}>
       <Box
         role={"group"}
-        p={5}
+        p={3}
         maxW={"500px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.900")}
@@ -29,12 +29,13 @@ export default function Artist({ item }) {
         pos={"relative"}
         zIndex={1}
       >
-        <SimpleGrid columns={{ md: 3 }}>
+        <Flex>
           <Image
             rounded={"lg"}
             width={20}
             height={20}
             marginLeft={10}
+            marginRight={10}
             objectFit={"cover"}
             src={item.image[1]["#text"]}
           />
@@ -46,19 +47,13 @@ export default function Artist({ item }) {
               <Divider p={1} />
             </Link>
             <Stack direction={"row"} align={"center"}>
-              <Text fontWeight={600} fontSize={"md"}>
-                Playcount:
-              </Text>
-              <Text color={"gray.600"}>{item.playcount}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>playcount: {item.playcount}</Text>
             </Stack>
             <Stack direction={"row"} align={"center"}>
-              <Text fontWeight={600} fontSize={"md"}>
-                Listeners:
-              </Text>
-              <Text color={"gray.600"}>{item.listeners}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>listeners: {item.listeners}</Text>
             </Stack>
           </Box>
-        </SimpleGrid>
+        </Flex>
       </Box>
     </Center>
   );
