@@ -1,13 +1,16 @@
 import React from "react";
 import {
   Container,
+  Link
 } from "@chakra-ui/react";
-import TopArtists from "./TopArtists";
 
 export default function Home() {
   return (
     <Container>
-      <TopArtists/>
+       <Link href={`/top-artists`}>
+         Top Artists
+       </Link>
+     
     </Container>
   )
 }
