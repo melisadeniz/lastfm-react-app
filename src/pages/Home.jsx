@@ -1,16 +1,35 @@
 import React from "react";
 import {
   Container,
-  Link
+  Button,
+  Heading,
+  Center,
+  Box,
+  Link,
+  Divider,
 } from "@chakra-ui/react";
 
 export default function Home() {
   return (
     <Container>
-       <Link href={`/top-artists`}>
-         Top Artists
-       </Link>
-     
+      <Center p={10}>
+        <Heading fontSize={"4xl"} fontFamily={"body"} fontWeight={700}>
+          Welcome to Last.fm!
+        </Heading>
+      </Center>
+
+      <Box p={10}>
+        <Center fontSize={"2xl"} fontFamily={"body"} fontWeight={700}>
+          Charts
+        </Center>
+
+        <Divider />
+        <Center>
+        <Link color={"white"} href={`/top-artists`}>
+          <Button colorScheme={"red"} my={5}>Top Artists</Button>
+        </Link>
+        </Center>
+      </Box>
     </Container>
-  )
+  );
 }

@@ -4,7 +4,7 @@ import Artist from "../components/Artist";
 import { API_KEY } from "../api";
 import {
   Heading,
-  Wrap,
+  Container,
   Center,
   List,
   ListItem,
@@ -21,7 +21,8 @@ export default function TopArtists() {
     );
     return response.json();
   };
-
+  
+  
   const { data, isLoading, isError, error, hasNextPage, fetchNextPage } =
     useInfiniteQuery(["artists"], fetchTopArtists, {
       getNextPageParam: (_lastpage, pages) => {
@@ -35,7 +36,8 @@ export default function TopArtists() {
         }
       },
     });
-
+  
+  //Infinite Scroll
   useEffect(() => {
     let fetching = false;
     const onScroll = async (event) => {
@@ -55,6 +57,7 @@ export default function TopArtists() {
     };
   }, []);
 
+  //isLoading
   if (isLoading) {
     return (
       <Center m={3}>
@@ -63,6 +66,7 @@ export default function TopArtists() {
     );
   }
 
+  //isError
   if (isError) {
     return (
       <Center m={3}>
@@ -72,7 +76,7 @@ export default function TopArtists() {
   }
 
   return (
-    <Wrap>
+    <Container>
       <Center m={3}>
         <Heading>TOP ARTISTS</Heading>
       </Center>
@@ -95,7 +99,6 @@ export default function TopArtists() {
         </Button>
       </Center>
 
-      {/* {data?.length === 0 && <NotFound />} */}
-    </Wrap>
+    </Container>
   );
 }
