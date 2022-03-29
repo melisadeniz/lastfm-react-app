@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useInfiniteQuery } from "react-query";
 import Artist from "../components/Artist";
 import { API_KEY } from "../api";
@@ -16,13 +16,17 @@ import { HeadingStyle } from "../styles/Heading";
 
 export default function Home() {
   //FETCH TOP ARTISTS
-  const fetchTopArtists = async ({ pageParam = 1 }) => {
+  async function fetchTopArtists(pageParam = 1) {
     const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&page=${pageParam}`
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=50&page=` +
+        pageParam
     );
-    return response.json();
+    const data = await response.json();
+    return data;
   };
 
+
+  //API call for top artists with react-query infinite scroll
   const {
     data,
     isLoading,
@@ -32,42 +36,14 @@ export default function Home() {
     isFetching,
     isFetchingNextPage,
     fetchNextPage,
-  } = useInfiniteQuery(["artists"], fetchTopArtists, {
-    getNextPageParam: (pages) => {
-      if (pages.length < pages.artists[0]["@attr"].totalPages) {
-        // "totalPages": "83349"
-        // pages.artists[0]['@attr'].totalPages
+  } = useInfiniteQuery("topArtists", fetchTopArtists,
+    {
+      getNextPageParam: (lastPage, allPages) => lastPage + 1,
+    }
+  );
 
-        return [pages.length + 1] + 1;
-      } else {
-        return undefined;
-      }
-    },
-  });
 
   console.log(data);
-
-  //Infinite Scroll
-  useEffect(() => {
-    let fetching = false;
-    const onScroll = async (event) => {
-      const { scrollHeight, scrollTop, clientHeight } =
-        event.target.scrollingElement;
-
-      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
-        fetching = true;
-        if (hasNextPage) await fetchNextPage();
-        fetching = false;
-      }
-    };
-
-    document.addEventListener("scroll", onScroll);
-    return () => {
-      document.removeEventListener("scroll", onScroll);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   //isLoading
   if (isLoading) {

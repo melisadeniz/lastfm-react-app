@@ -30,7 +30,7 @@ export default function Card({ item }) {
           src={item.image[1]["#text"]}
         />
         <Box px={5}>
-          <Heading fontSize={20} fontFamily={"body"} fontWeight={650}>
+          <Heading fontSize={20} fontFamily={"body"} fontWeight={600}>
             {item.name}
           </Heading>
           <Divider p={1} />

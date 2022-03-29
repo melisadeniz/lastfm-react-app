@@ -41,7 +41,7 @@ export default function Artist({ item }) {
           />
           <Box>
             <Link href={`/artist/${artist_url}`}>
-              <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700}>
+              <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={600}>
                 {item.name}
               </Heading>
               <Divider p={1} />
