@@ -30,7 +30,6 @@ DarkStory.args = {
   task: {
     name: "Jane Doe",
     backgroundColor: "gray.900",
-    listencount: "12345",
     playcount: "12345",
   },
 };
