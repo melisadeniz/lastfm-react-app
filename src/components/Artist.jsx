@@ -13,8 +13,10 @@ import {
 } from "@chakra-ui/react";
 
 export default function Artist({ item }) {
+  const {  name, playcount, image, listeners } =
+  item;
   // DECODE FOR URL
-  const artist_url = decodeURI(item.name);
+  const artist_url = decodeURI(name);
 
   return (
     <Center py={3}>
@@ -37,20 +39,20 @@ export default function Artist({ item }) {
             marginLeft={10}
             marginRight={10}
             objectFit={"cover"}
-            src={item.image[1]["#text"]}
+            src={image[1]["#text"]}
           />
           <Box>
             <Link href={`/artist/${artist_url}`}>
               <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={600}>
-                {item.name}
+                {name}
               </Heading>
               <Divider p={1} />
             </Link>
             <Stack direction={"row"} align={"center"}>
-              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>playcount: {item.playcount}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>playcount: {playcount}</Text>
             </Stack>
             <Stack direction={"row"} align={"center"}>
-              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>listeners: {item.listeners}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>listeners: {listeners}</Text>
             </Stack>
           </Box>
         </Flex>

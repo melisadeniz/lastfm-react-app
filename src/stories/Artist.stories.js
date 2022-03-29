@@ -18,19 +18,19 @@ const Template = (args) => <Artist {...args} />;
 export const LightStory = Template.bind({});
 LightStory.args = {
   task: {
-    name: "John Doe",
+    name: "Kanye West",
     backgroundColor: "white",
-    listencount: "1234",
-    playcount: "1234",
+    listencount: "12345",
+    playcount: "12345",
   },
 };
 
 export const DarkStory = Template.bind({});
 DarkStory.args = {
   task: {
-    name: "Jane Doe",
+    name: "Kanye West",
     backgroundColor: "gray.900",
-    listencount: "1234",
-    playcount: "1234",
+    listencount: "12345",
+    playcount: "12345",
   },
 };
