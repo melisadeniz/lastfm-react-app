@@ -1,5 +1,5 @@
-import Home from "./pages/Home";
-import Detail from "./pages/Detail";
+import Home from "../pages/Home";
+import Detail from "../pages/Detail";
 
 const routes = [
   { title: "Home", path: "/", element: Home },

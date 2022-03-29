@@ -15,8 +15,8 @@ export default {
 const Template = (args) => <Card {...args} />;
 
 //👇 Each story then reuses that template
-export const LightStory = Template.bind({});
-LightStory.args = {
+export const Light = Template.bind({});
+Light.args = {
   task: {
     name: "Kanye West",
     backgroundColor: "white",
@@ -25,8 +25,8 @@ LightStory.args = {
   },
 };
 
-export const DarkStory = Template.bind({});
-DarkStory.args = {
+export const Dark = Template.bind({});
+Dark.args = {
   task: {
     name: "Kanye West",
     backgroundColor: "gray.900",

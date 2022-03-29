@@ -7,7 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Header from "./pages/base/Header";
-import routes from "./routes";
+import routes from "./routes/routes"
 
 const queryClient = new QueryClient();
 
