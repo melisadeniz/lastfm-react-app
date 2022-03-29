@@ -9,6 +9,6 @@ import Home from "../pages/Home";
 
 test("h1 renders the correct text", () => {
   render(<Home />);
-  const h1 = screen.getByTestId("welcome-heading");;
+  const h1 = screen.getByTestId("welcome-heading");
   expect(h1).toHaveTextContent("Welcome to Last.fm!");
 });

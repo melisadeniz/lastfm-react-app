@@ -1,4 +1,5 @@
 import React from "react";
+import logoLastfm from '../../assets/lastfm_logo.png';
 import {
   Box,
   Flex,
@@ -15,11 +16,11 @@ export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
-      <Box data-testid="header" bg={useColorModeValue("gray.300", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("gray.300", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-            <Link href="/" >
-            <Image src="/lastfm_logo.png" alt="logo" width={50} height={50} />
+            <Link data-testid="header" href="/" >
+            <Image src={logoLastfm} alt={"logoLastfm"} width={50} height={50} />
             </Link>
           </Box>
 

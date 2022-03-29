@@ -79,7 +79,7 @@ export default function Detail() {
 
           <Divider my={3}/>
 
-          <Albums />
+          <Albums key={artistInfo?.mbid} />
         </Box>
 
         <Box
@@ -96,7 +96,7 @@ export default function Detail() {
 
           <Divider my={3}/>
 
-          <Tracks />
+          <Tracks key={artistInfo?.mbid} />
         </Box>
       </Flex>
     </Wrap>

@@ -18,24 +18,34 @@ export default function Home() {
   //FETCH TOP ARTISTS
   const fetchTopArtists = async ({ pageParam = 1 }) => {
     const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=50&page=${pageParam}`
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&page=${pageParam}`
     );
     return response.json();
   };
 
-  const { data, isLoading, isError, error, hasNextPage, fetchNextPage } =
-    useInfiniteQuery(["artists"], fetchTopArtists, {
-      getNextPageParam: (_lastpage, pages) => {
-        if (pages.length <= 83349) {
-          // "totalPages": "83349"
-          // pages.artists[0]['@attr'].totalPages ??
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery(["artists"], fetchTopArtists, {
+    getNextPageParam: (pages) => {
+      if (pages.length < pages.artists[0]["@attr"].totalPages) {
+        // "totalPages": "83349"
+        // pages.artists[0]['@attr'].totalPages
 
-          return [pages.length + 1] + 1;
-        } else {
-          return undefined;
-        }
-      },
-    });
+        return [pages.length + 1] + 1;
+      } else {
+        return undefined;
+      }
+    },
+  });
+
+  console.log(data);
 
   //Infinite Scroll
   useEffect(() => {
@@ -55,6 +65,8 @@ export default function Home() {
     return () => {
       document.removeEventListener("scroll", onScroll);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //isLoading
@@ -92,20 +104,32 @@ export default function Home() {
 
       <Box>
         <List>
-          {data?.pages.map((page) =>
-            page.artists.artist.map((item, index) => (
-              <ListItem key={index}>
-                <Artist height={"280"} width={"180"} item={item} />
-              </ListItem>
-            ))
-          )}
+          {data?.pages.map((group, i) => (
+            <React.Fragment key={i}>
+              {group.artists.artist.map((item, index) => (
+                <ListItem key={index}>
+                  <Artist height={"280"} width={"180"} item={item} />
+                </ListItem>
+              ))}
+            </React.Fragment>
+          ))}
         </List>
       </Box>
 
       <Center p={5}>
-        <Button disabled={!hasNextPage} onClick={fetchNextPage}>
-          Load More
-        </Button>
+        <Box>
+          <Button
+            disabled={!hasNextPage || isFetchingNextPage}
+            onClick={() => fetchNextPage()}
+          >
+            {isFetchingNextPage
+              ? "Loading more..."
+              : hasNextPage
+              ? "Load More"
+              : "Nothing more to load"}
+          </Button>
+        </Box>
+        <Box>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</Box>
       </Center>
     </Container>
   );

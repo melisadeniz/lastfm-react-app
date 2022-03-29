@@ -20,10 +20,10 @@ export default function Tracks() {
   const artistTracks = artistTracksData?.data?.data?.toptracks?.track;
 
   return (
-    <List spacing={3}>
+    <List  spacing={3}>
       {artistTracks?.map((item, index) => (
-        <ListItem>
-          <Card key={index} item={item} />
+        <ListItem key={index}>
+          <Card item={item} />
         </ListItem>
       ))}
     </List>
