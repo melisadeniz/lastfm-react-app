@@ -2,14 +2,19 @@
 
 ## Home Page
 
-#### Top Artists. 
+#### Top Artists 
 
 ## Detail Page
 
-#### Top Albums & Tracks.
+#### Top Albums & Tracks
 
 ## Technologies 🚀
 - React
 - React Router Dom
 - React Query
+- React Testing Library
 - Chakra-UI
+- Storybook
+- [Last.fm API](https://www.last.fm/tr/api)
+
+
