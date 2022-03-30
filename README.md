@@ -1,6 +1,6 @@
 # Last.fm App 🎧
 
-## LIVE
+### LIVE
 
 #### It is an application that you can access the 'Top Artists' and their 'Top Tracks' and 'Top Albums' with the detail. The information is taken from the Last.fm API. 
 
