@@ -24,7 +24,7 @@ export default function TopArtists() {
       throw new Error("Response was not OK");
     }
     const data = await response.json();
-    return data.artists.artist;
+    return data;
   }
 
   // React-query infinite scroll
@@ -38,8 +38,11 @@ export default function TopArtists() {
     isFetchingNextPage,
     fetchNextPage,
   } = useInfiniteQuery("topArtists", fetchTopArtists, {
-    getNextPageParam: (lastPage, _allPages) => lastPage + 1,
+    getNextPageParam: (_lastPage, allPages) => [allPages.length + 1],
+    // The length of current pages is increased by one
   });
+
+  console.log(data);
 
   //isLoading
   if (isLoading) {
@@ -71,7 +74,7 @@ export default function TopArtists() {
         <List>
           {data?.pages.map((group, i) => (
             <React.Fragment key={i}>
-              {group.map((item, index) => (
+              {group?.artists?.artist.map((item, index) => (
                 <ListItem key={index}>
                   <Artist height={"280"} width={"180"} artist={item} />
                 </ListItem>
