@@ -20,8 +20,11 @@ export default function TopArtists() {
       `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&page=` +
         pageParams
     );
-    const results = await response.json();
-    return results.artists.artist;
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data.artists.artist;
   }
 
   // React-query infinite scroll
@@ -35,7 +38,7 @@ export default function TopArtists() {
     isFetchingNextPage,
     fetchNextPage,
   } = useInfiniteQuery("topArtists", fetchTopArtists, {
-    getNextPageParam: (lastPage) => lastPage + 1,
+    getNextPageParam: (lastPage, allPages) => lastPage + 1,
   });
 
   //isLoading
