@@ -26,7 +26,7 @@ export default function Home() {
   };
 
 
-  //API call for top artists with react-query infinite scroll
+  //API call to show top artists list with react-query infinite scroll
   const {
     data,
     isLoading,
@@ -84,7 +84,7 @@ export default function Home() {
             <React.Fragment key={i}>
               {group.artists.artist.map((item, index) => (
                 <ListItem key={index}>
-                  <Artist height={"280"} width={"180"} item={item} />
+                  <Artist height={"280"} width={"180"} artist={item} />
                 </ListItem>
               ))}
             </React.Fragment>

@@ -17,20 +17,16 @@ const Template = (args) => <Artist {...args} />;
 //👇 Each story then reuses that template
 export const Light = Template.bind({});
 Light.args = {
-  task: {
-    name: "Kanye West",
-    backgroundColor: "white",
-    listencount: "12345",
-    playcount: "12345",
-  },
+  name: "Kanye West",
+  backgroundColor: "white",
+  listencount: "12345",
+  playcount: "12345",
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  task: {
-    name: "Kanye West",
-    backgroundColor: "gray.900",
-    listencount: "12345",
-    playcount: "12345",
-  },
+  name: "Kanye West",
+  backgroundColor: "gray.900",
+  listencount: "12345",
+  playcount: "12345",
 };

@@ -12,9 +12,9 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-export default function Artist({ item }) {
+export default function Artist({ artist }) {
   const {  name, playcount, image, listeners } =
-  item;
+  artist;
   // DECODE FOR URL
   const artist_url = decodeURI(name);
 

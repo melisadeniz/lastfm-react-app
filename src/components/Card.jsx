@@ -10,9 +10,8 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-export default function Card({ item }) {
-  const {  name, playcount, artist, image, listeners } =
-    item;
+export default function Card({ props }) {
+  const {  name, playcount, artist, image, listeners } = props;
   return (
     <Box
       p={4}

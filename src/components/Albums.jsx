@@ -21,9 +21,9 @@ export default function Albums() {
 
   return (
     <List spacing={3}>
-      {artistAlbums?.map((item, index) => (
+      {artistAlbums?.map((album, index) => (
         <ListItem key={index}>
-          <Card item={item} />
+          <Card props={album} />
         </ListItem>
       ))}
     </List>
