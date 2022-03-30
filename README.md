@@ -1,6 +1,5 @@
 # Last.fm App 🎧
 
-### LIVE
 
 #### It is an application that you can access the 'Top Artists' and their 'Top Albums' and 'Top Tracks' with the detail. I used the same component for Albums and Tracks card component. The main page has an infinite scrolling to see the next top artists. The information is taken from the Last.fm API. 
 
