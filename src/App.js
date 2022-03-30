@@ -14,8 +14,8 @@ function App() {
       <Fragment>
         <Header />
         <Routes>
-          {routes.map((item, index) => (
-            <Route key={index} path={item.path} element={<item.element />} />
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={<route.element />} />
           ))}
         </Routes>
       </Fragment>
