@@ -17,7 +17,7 @@ export default function TopArtists() {
   //FETCH TOP ARTISTS
   async function fetchTopArtists({ pageParam = 1 }) {
     const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=50&page=` +
+      `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=50&page=` +
         pageParam
     );
     if (!response.ok) {

@@ -6,7 +6,7 @@ export const API_KEY = "e908f48f816b4a2314e9ddeeb138077f";
 
 // baseURL
 const BASE_AXIOS = axios.create({
-  baseURL: "http://ws.audioscrobbler.com/2.0",
+  baseURL: "https://ws.audioscrobbler.com/2.0",
 });
 
 // //chart.getTopArtists
