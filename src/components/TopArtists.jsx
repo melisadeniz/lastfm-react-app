@@ -38,8 +38,8 @@ export default function TopArtists() {
     isFetchingNextPage,
     fetchNextPage,
   } = useInfiniteQuery("topArtists", fetchTopArtists, {
-    getNextPageParam: (_lastPage, allPages) => [allPages.length + 1],
-    // The length of current pages is increased by one
+    getNextPageParam: (_lastPage, allPages) => [allPages.length + 2],
+    // index of first page[0] + 2 = 2 => (second page)
   });
 
   console.log(data);
