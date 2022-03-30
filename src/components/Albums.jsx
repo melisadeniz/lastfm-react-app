@@ -1,9 +1,9 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import Card from "./Card";
 import { List, ListItem } from "@chakra-ui/react";
 import { fetchTopAlbums } from "../api";
+import Card from "./Card";
 
 export default function Albums() {
   const { artist_url } = useParams();

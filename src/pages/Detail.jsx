@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 import {
   Wrap,
   Heading,
@@ -9,7 +10,6 @@ import {
   useColorModeValue,
   Divider,
 } from "@chakra-ui/react";
-import { useQuery } from "react-query";
 import { fetchArtistInfo } from "../api";
 import Albums from "../components/Albums";
 import Tracks from "../components/Tracks";

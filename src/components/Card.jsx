@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Card({ props }) {
-  const {  name, playcount, artist, image, listeners } = props;
+  const { name, playcount, artist, image, listeners } = props;
   return (
     <Box
       p={4}
@@ -36,23 +36,32 @@ export default function Card({ props }) {
           </Heading>
           <Divider p={1} />
           <Stack direction={"row"} align={"center"}>
-            <Text fontSize={"sm"} color={"gray.600"}>{artist.name}</Text>
+            <Text fontSize={"sm"} color={"gray.600"}>
+              {artist.name}
+            </Text>
           </Stack>
-      
+
           <Stack direction={"row"} align={"center"}>
-            <Text fontSize={"sm"} color={"gray.600"}>{playcount} plays</Text>
-         <Divider orientation={"vertical"}/>   
-            <Text style={{
-              display:
-                listeners === "" ||
-                listeners === null ||
-                listeners === undefined
-                  ? "none"
-                  : "block",
-            }} fontSize={"sm"} color={"gray.600"}>{listeners} listeners</Text>
-        </Stack>
-        
-         </Box>
+            <Text fontSize={"sm"} color={"gray.600"}>
+              {playcount} plays
+            </Text>
+            <Divider orientation={"vertical"} />
+            <Text
+              style={{
+                display:
+                  listeners === "" ||
+                  listeners === null ||
+                  listeners === undefined
+                    ? "none"
+                    : "block",
+              }}
+              fontSize={"sm"}
+              color={"gray.600"}
+            >
+              {listeners} listeners
+            </Text>
+          </Stack>
+        </Box>
       </Flex>
     </Box>
   );

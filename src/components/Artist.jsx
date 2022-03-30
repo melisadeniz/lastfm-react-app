@@ -13,8 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Artist({ artist }) {
-  const {  name, playcount, image, listeners } =
-  artist;
+  const { name, playcount, image, listeners } = artist;
   // DECODE FOR URL
   const artist_url = decodeURI(name);
 
@@ -49,10 +48,14 @@ export default function Artist({ artist }) {
               <Divider p={1} />
             </Link>
             <Stack direction={"row"} align={"center"}>
-              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>playcount: {playcount}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>
+                playcount: {playcount}
+              </Text>
             </Stack>
             <Stack direction={"row"} align={"center"}>
-              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>listeners: {listeners}</Text>
+              <Text fontSize={"sm"} fontFamily={"body"} color={"gray.600"}>
+                listeners: {listeners}
+              </Text>
             </Stack>
           </Box>
         </Flex>

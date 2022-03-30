@@ -1,9 +1,9 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import Card from "../components/Card";
 import { List, ListItem } from "@chakra-ui/react";
 import { fetchTopTracks } from "../api";
+import Card from "../components/Card";
 
 export default function Tracks() {
   const { artist_url } = useParams();
@@ -20,7 +20,7 @@ export default function Tracks() {
   const artistTracks = artistTracksData?.data?.data?.toptracks?.track;
 
   return (
-    <List  spacing={3}>
+    <List spacing={3}>
       {artistTracks?.map((track, index) => (
         <ListItem key={index}>
           <Card props={track} />
