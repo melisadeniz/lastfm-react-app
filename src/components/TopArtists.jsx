@@ -15,13 +15,13 @@ import Artist from "./Artist";
 
 export default function TopArtists() {
   //FETCH TOP ARTISTS
-  async function fetchTopArtists(pageParam = 1) {
+  async function fetchTopArtists() {
     const response = await fetch(
       `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=30&page=` +
-        pageParam
+        1
     );
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Response was not OK");
     }
     const data = await response.json();
     return data.artists.artist;
