@@ -1,6 +1,8 @@
 # Last.fm App 🎧
 
-#### It is an application that you can access the top artists and their top tracks and albums with the detail. The information is taken from the Last.fm API. 
+##LIVE
+
+#### It is an application that you can access the "Top Artists" and their "Top Tracks" and "Top Albums" with the detail. The information is taken from the Last.fm API. 
 
 🎤 You can see the list of top artists at the main page.  
 💿 You can see the detail of a specific artist.  
