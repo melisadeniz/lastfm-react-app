@@ -1,4 +1,4 @@
-# 🎧 Last.fm Case Study 
+# Last.fm Case Study 🎧
 
 #### It is an application that you can access the top artists and their top tracks and albums with the detail. The information is taken from the Last.fm API. 
 
