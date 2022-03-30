@@ -15,10 +15,10 @@ import Artist from "./Artist";
 
 export default function TopArtists() {
   //FETCH TOP ARTISTS
-  async function fetchTopArtists() {
+  async function fetchTopArtists({ pageParam = 1 }) {
     const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=30&page=` +
-        1
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=50&page=` +
+        pageParam
     );
     if (!response.ok) {
       throw new Error("Response was not OK");
@@ -38,7 +38,7 @@ export default function TopArtists() {
     isFetchingNextPage,
     fetchNextPage,
   } = useInfiniteQuery("topArtists", fetchTopArtists, {
-    getNextPageParam: (lastPage, allPages) => lastPage + 1,
+    getNextPageParam: (lastPage, _allPages) => lastPage + 1,
   });
 
   //isLoading
