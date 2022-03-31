@@ -32,7 +32,7 @@ export default function Card({ props }) {
         />
         <Box m={[1, 2, 3]}>
           <Heading
-            fontSize={{ base: "10px", sm: "15px", md: "25px" }}
+            fontSize={{ base: "10px", sm: "15px", md: "20px" }}
             fontFamily={"body"}
             fontWeight={600}
           >

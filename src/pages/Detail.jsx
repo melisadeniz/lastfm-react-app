@@ -79,7 +79,7 @@ export default function Detail() {
           w={"full"}
         >
           <Heading
-            fontSize={{ base: "15px", sm: "20px" }}
+            fontSize={{ base: "15px", sm: "20px", md: "25px" }}
             fontFamily={"body"}
             fontWeight={700}
             m={3}
@@ -101,7 +101,7 @@ export default function Detail() {
           w={"full"}
         >
           <Heading
-            fontSize={{ base: "15px", sm: "20px" }}
+            fontSize={{ base: "15px", sm: "20px", md: "25px" }}
             fontFamily={"body"}
             fontWeight={700}
             m={3}
