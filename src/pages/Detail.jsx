@@ -32,6 +32,7 @@ export default function Detail() {
   return (
     <Wrap p={5}>
       <Box
+        width={{ base: "50%", sm: "100%" }}
         role={"group"}
         p={5}
         rounded={"lg"}
@@ -55,7 +56,11 @@ export default function Detail() {
               src={artistInfo?.image[1]["#text"]}
             />
             <Box p={5}>
-              <Heading fontSize={30} fontFamily={"body"} fontWeight={700}>
+              <Heading
+                fontSize={{ base: "20px", sm: "25px", md: "30px" }}
+                fontFamily={"body"}
+                fontWeight={700}
+              >
                 {artistInfo?.name}
               </Heading>
               <Divider py={1} />
@@ -67,34 +72,44 @@ export default function Detail() {
       <Flex>
         <Box
           role={"group"}
-          p={5}
+          p={[2, 4, 6, 8]}
           rounded={"lg"}
           pos={"relative"}
           zIndex={1}
           w={"full"}
         >
-          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
+          <Heading
+            fontSize={{ base: "15px", sm: "20px" }}
+            fontFamily={"body"}
+            fontWeight={700}
+            m={3}
+          >
             TOP ALBUMS
           </Heading>
 
-          <Divider my={3}/>
+          <Divider my={3} />
 
           <Albums key={artistInfo?.mbid} />
         </Box>
 
         <Box
           role={"group"}
-          p={5}
+          p={[2, 4, 6, 8]}
           rounded={"lg"}
           pos={"relative"}
           zIndex={1}
           w={"full"}
         >
-          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={700} m={3}>
+          <Heading
+            fontSize={{ base: "15px", sm: "20px" }}
+            fontFamily={"body"}
+            fontWeight={700}
+            m={3}
+          >
             TOP TRACKS
           </Heading>
 
-          <Divider my={3}/>
+          <Divider my={3} />
 
           <Tracks key={artistInfo?.mbid} />
         </Box>
